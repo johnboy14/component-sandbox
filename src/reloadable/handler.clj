@@ -5,8 +5,7 @@
             [ring.middleware.json :as middleware]))
 
 (defn get-keys [channel]
-  {:private (async/<!! channel)
-   :public (async/<!! channel)})
+  (async/<!! channel))
 
 (defn app [channel]
   (->

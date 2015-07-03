@@ -14,14 +14,14 @@
 
 (defn start
   "Starts the current development system."
-  []
-  (alter-var-root #'system component/start))
+  ([](alter-var-root #'system component/start))
+  ([component] (component/start component)))
 
 (defn stop
   "Shuts down and destroys the current development system."
-  []
-  (alter-var-root #'system
-                  (fn [s] (when s (component/stop s)))))
+  ([] (alter-var-root #'system
+                     (fn [s] (when s (component/stop s)))))
+  ([component] (component/stop component)))
 
 (defn go
   "Initializes the current development system and starts it running."
